@@ -6,5 +6,5 @@ import pokemonsReducer from './pokemonsReducer';
 export default combineReducers({
 	favourites: favouritesReducer,
 	pokemons: pokemonsReducer,
-	pokemon: pokemonReducer,
+	selectedPokemon: pokemonReducer,
 });

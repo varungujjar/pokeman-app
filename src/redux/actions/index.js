@@ -1,3 +1,4 @@
+import CONFIG from '../../config';
 import axios from 'axios';
 
 const memoAxios = (callback) => {
@@ -15,28 +16,30 @@ const axiosGet = memoAxios(axios.get);
 
 export const addFavourite = (id) => {
 	return {
-		type: 'ADD_FAVOURITE',
+		type: CONFIG.ACTION_ADD_FAV,
 		payload: id,
 	};
 };
 
 export const deleteFavourite = (id) => {
 	return {
-		type: 'DELETE_FAVOURITE',
+		type: CONFIG.ACTION_DEL_FAV,
 		payload: id,
 	};
 };
 
 export const fetchPokemons = (currentUrl) => async (dispatch) => {
-	const limit = 50;
+	dispatch({
+		type: CONFIG.ACTION_POKEMONS_LOADING,
+	});
 	if (!currentUrl) {
-		currentUrl = `https://pokeapi.co/api/v2/pokemon?limit=${limit}`;
+		currentUrl = `https://pokeapi.co/api/v2/pokemon?limit=${CONFIG.LIMIT}`;
 	}
 	try {
 		await axiosGet(currentUrl).then((response) => {
 			dispatch({
-				type: 'POKEMONS',
-				payload: response.data,
+				type: CONFIG.ACTION_POKEMONS,
+				payload: { ...response.data, currentUrl: currentUrl },
 			});
 		});
 	} catch (error) {
@@ -47,10 +50,13 @@ export const fetchPokemons = (currentUrl) => async (dispatch) => {
 };
 
 export const fetchPokemon = (id) => async (dispatch) => {
+	dispatch({
+		type: CONFIG.ACTION_POKEMON_LOADING,
+	});
 	try {
 		await axiosGet(`https://pokeapi.co/api/v2/pokemon/${id}`).then((response) => {
 			dispatch({
-				type: 'POKEMON',
+				type: CONFIG.ACTION_POKEMON,
 				payload: response.data,
 			});
 		});

@@ -1,9 +1,13 @@
-const pokemonsReducer = (state = null, action) => {
+import CONFIG from '../../config';
+
+const pokemonsReducer = (state, action) => {
 	switch (action.type) {
-		case 'POKEMONS':
-			return { ...state, ...action.payload };
+		case CONFIG.ACTION_POKEMONS:
+			return { ...state, ...action.payload, loading: false };
+		case CONFIG.ACTION_POKEMONS_LOADING:
+			return { ...state, loading: true };
 		default:
-			return state;
+			return { ...state, loading: true };
 	}
 };
 

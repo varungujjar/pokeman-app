@@ -9,7 +9,7 @@ const PokemanDetail = () => {
 	const { id } = useParams();
 
 	const dispatchAction = useDispatch();
-	const { pokemon } = useSelector((state) => {
+	const { selectedPokemon } = useSelector((state) => {
 		return state;
 	});
 
@@ -27,15 +27,15 @@ const PokemanDetail = () => {
 					</Link>
 				</header>
 
-				{pokemon === null ? (
+				{selectedPokemon.loading ? (
 					<Loading />
 				) : (
 					<div className="pokemon-card">
-						<img src={getImageUrl(id)} alt={pokemon.forms[0].name} />
-						<h1>{pokemon.forms[0].name}</h1>
-						<div>Base Experience : {pokemon.base_experience}</div>
-						<div>Height : {pokemon.height}</div>
-						<div>Weight : {pokemon.weight}</div>
+						<img src={getImageUrl(id)} alt={selectedPokemon.forms[0].name} />
+						<h1>{selectedPokemon.forms[0].name}</h1>
+						<div>Base Experience : {selectedPokemon.base_experience}</div>
+						<div>Height : {selectedPokemon.height}</div>
+						<div>Weight : {selectedPokemon.weight}</div>
 					</div>
 				)}
 			</div>

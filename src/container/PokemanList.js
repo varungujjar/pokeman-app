@@ -7,11 +7,12 @@ import Pagination from '../components/Pagination';
 import PokemanItem from '../components/PokemanItem';
 
 const PokemanList = () => {
-	const [currentPageUrl, setCurrentPageUrl] = useState('');
 	const dispatchAction = useDispatch();
 	const { pokemons } = useSelector((state) => {
 		return state;
 	});
+
+	const [currentPageUrl, setCurrentPageUrl] = useState(pokemons ? pokemons.currentUrl : '');
 
 	useEffect(() => {
 		dispatchAction(fetchPokemons(currentPageUrl));
@@ -37,7 +38,7 @@ const PokemanList = () => {
 					)}
 				</header>
 
-				{pokemons === null ? (
+				{pokemons.loading ? (
 					<Loading />
 				) : (
 					<ul>
