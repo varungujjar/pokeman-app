@@ -128,7 +128,7 @@ li span {
 	left: 10px;
 	top: 10px;
 	cursor: pointer;
-	z-index: 99;
+	z-index: 9;
 }
 .button-favourite:hover {
 	background-color: #efefef;
