@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@600&display=swap');
+
+body {
+	font-family: 'Manrope', sans-serif;
+	margin: 0px;
+	padding: 10px 30px;
+	background-color: #f1c40f;
+}
+
+header {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.container {
+	width: 1280px;
+	margin: 0px auto;
+}
+
+.container-detail {
+	width: 30%;
+	margin: 0px auto;
+	text-align: center;
+}
+
+@media (max-width: 1279px) {
+	.container {
+		width: 100%;
+		margin: 0px;
+	}
+	.container-detail {
+		width: 100%;
+	}
+}
+
+.pokemon-card {
+	background-color: #fff;
+	border-radius: 5px;
+	margin: 0px auto;
+	padding: 30px;
+}
+.pokemon-card div {
+	background-color: #efefef;
+	margin-bottom: 1px;
+	padding: 10px 0px;
+	font-size: 13px;
+	font-weight: 800;
+}
+
+a:link,
+a:visited,
+a:focus {
+	text-decoration: none;
+	color: #c0392b;
+	text-transform: uppercase;
+	transition: 0.3s;
+	font-weight: 800;
+}
+a:hover {
+	color: #222;
+}
+
+ul {
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+li {
+	flex-grow: 1;
+	padding: 30px;
+	border-radius: 5px;
+	margin-bottom: 20px;
+	margin-right: 20px;
+	background-color: #fff;
+	text-align: center;
+	transition: 0.3s;
+	position: relative;
+}
+
+li:hover {
+	-webkit-box-shadow: 4px 25px 32px -25px rgba(0, 0, 0, 0.29);
+	-moz-box-shadow: 4px 25px 32px -25px rgba(0, 0, 0, 0.29);
+	box-shadow: 4px 25px 32px -25px rgba(0, 0, 0, 0.29);
+}
+
+li img {
+	max-width: 80%;
+}
+
+li span {
+	display: block;
+	text-align: center;
+	padding-top: 15px;
+}
+
+.button {
+	border-radius: 50px;
+	background-color: #e74c3c;
+	border: none;
+	color: #fff !important;
+	padding: 10px 30px;
+	cursor: pointer;
+	transition: 0.3s;
+	font-size: 15px;
+	font-weight: normal;
+	text-transform: none !important;
+}
+.button:hover {
+	background-color: #c0392b;
+}
+
+.button-favourite {
+	background-color: #efefef;
+	border: none;
+	border-radius: 100%;
+	width: 32px;
+	height: 32px;
+	vertical-align: middle;
+	padding-top: 4px;
+	position: absolute;
+	left: 10px;
+	top: 10px;
+	cursor: pointer;
+}
+.button-favourite:hover {
+	background-color: #efefef;
+}
+
+.loading {
+	background-color: #333 !important;
+	color: #f1c40f;
+	border-radius: 100px;
+	padding: 10px 30px;
+	display: inline-block;
+}
+
+img.logo {
+	width: 120px;
+	height: 68px;
+}
+.pagination .button {
+	margin-left: 10px;
+}
