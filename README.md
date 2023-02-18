@@ -1,14 +1,14 @@
 # Pokemon React App
 
-Pokemon App is a React web application where you can navigate the details of the different pokemon by clicking on the list of pokemon. It has the favvourite functionality with which you can favourite your pokemon by clicking on.
+Pokemon App is a React web application where you can navigate the details of the different pokemon by clicking on the list of 50 pokemons displayed per page. It has the favourite functionality with which you can favourite your pokemon by clicking on.
 
 ## snapshot
 
-![pokemon](snapshot.PNG)
+![pokemon](screenshot.png)
 
 ## live demo
 
-[Pokemon app](https://react-pokedom.netlify.app/)
+[Pokemon React App Demo](https://#)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
