@@ -1,3 +1,4 @@
+import React from 'react';
 import { screen, waitFor, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import axios from 'axios';
@@ -11,7 +12,7 @@ jest.mock('axios');
 //We need to mock Router calls because
 //The Router isn't aware of what routes the links are attempting to link t that it is managing
 jest.mock('react-router-dom', () => ({
-	Link: (props) => {
+	Link: (props: any) => {
 		return <a {...props} href={props.to} />;
 	},
 }));
@@ -24,9 +25,8 @@ it('Test Pokemon List', async () => {
 	const user = userEvent.setup();
 
 	//Mock the axios get call with data
-	axios.get.mockImplementation(() => {
-		return Promise.resolve(mockPokemonList);
-	});
+	const mockedAxios = axios as jest.Mocked<typeof axios>;
+	mockedAxios.get.mockResolvedValue(mockPokemonList);
 
 	//Render the PokemonList component with Providers
 	renderWithProviders(<PokemanList />);
@@ -52,12 +52,12 @@ it('Test Pokemon List', async () => {
 		const favouriteImageIcon = within(favouriteButton).getByRole('img');
 
 		//Expect to have unfavourited icon by default
-		expect(favouriteImageIcon.alt).toBe('unfavourite-icon');
+		expect(favouriteImageIcon).toHaveAttribute('alt', 'unfavourite-icon');
 
 		//User clicks on the favourite icon
 		await user.click(favouriteButton);
 
 		//Expect to have favourited icon
-		expect(favouriteImageIcon.alt).toBe('favourite-icon');
+		expect(favouriteImageIcon).toHaveAttribute('alt', 'favourite-icon');
 	});
 });

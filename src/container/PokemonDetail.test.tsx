@@ -1,3 +1,4 @@
+import React from 'react';
 import { screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import axios from 'axios';
@@ -10,7 +11,7 @@ jest.mock('axios');
 //We need to mock Router calls because
 //The Router isn't aware of what routes the links are attempting to link t that it is managing
 jest.mock('react-router-dom', () => ({
-	Link: (props) => {
+	Link: (props: any) => {
 		return <a {...props} href={props.to} />;
 	},
 	useParams: () => ({
@@ -26,9 +27,10 @@ it('Test Pokemon Detail', async () => {
 	const user = userEvent.setup();
 
 	//Mock the axios get call with data
-	axios.get.mockImplementation(() => {
-		return Promise.resolve(mockPokemonDetail);
-	});
+	const mockedAxios = axios as jest.Mocked<typeof axios>;
+	mockedAxios.get.mockResolvedValue(mockPokemonDetail);
+
+	// (axios as unknown as jest.Mock).mockResolvedValueOnce(mockPokemonDetail);
 
 	//Render the PokemonList component with Providers
 	renderWithProviders(<PokemanDetail />);

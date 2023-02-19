@@ -32,7 +32,7 @@ const PokemonItem = ({ pokemon }: PokemonItemProps) => {
 
 	useEffect(() => {
 		isfavourites ? setFavourite(true) : setFavourite(false);
-	}, []);
+	}, [isfavourites]);
 
 	return (
 		<li>
