@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from '../redux/store';
 import { fetchPokemons } from '../redux/actions';
 import { getIdFromUrl } from '../helpers';
 import Loading from '../components/Loading';
@@ -7,8 +7,8 @@ import Pagination from '../components/Pagination';
 import PokemanItem from '../components/PokemanItem';
 
 const PokemanList = () => {
-	const dispatchAction = useDispatch();
-	const { pokemons } = useSelector((state) => {
+	const dispatchAction = useAppDispatch();
+	const { pokemons } = useAppSelector((state) => {
 		return state;
 	});
 
@@ -31,10 +31,7 @@ const PokemanList = () => {
 				<header>
 					<img src="./logo.png" alt="pokeman-logo" className="logo" />
 					{pokemons && (
-						<Pagination
-							gotoNextPage={pokemons.next ? gotoNextPage : null}
-							gotoPrevPage={pokemons.previous ? gotoPrevPage : null}
-						/>
+						<Pagination gotoNextPage={pokemons.next && gotoNextPage} gotoPrevPage={pokemons.previous && gotoPrevPage} />
 					)}
 				</header>
 
@@ -42,7 +39,7 @@ const PokemanList = () => {
 					<Loading />
 				) : (
 					<ul>
-						{pokemons.results.map((pokemon) => (
+						{pokemons.results.map((pokemon: any) => (
 							<PokemanItem key={getIdFromUrl(pokemon.url)} pokemon={pokemon} />
 						))}
 					</ul>

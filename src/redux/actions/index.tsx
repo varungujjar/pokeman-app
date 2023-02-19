@@ -1,9 +1,9 @@
 import CONFIG from '../../config';
 import axios from 'axios';
 
-const memoAxios = (callback) => {
+const memoAxios = (callback: any) => {
 	const cache = new Map();
-	return (...args) => {
+	return (...args: any) => {
 		const selector = JSON.stringify(args);
 		if (cache.has(selector)) return cache.get(selector);
 		const value = callback(...args);
@@ -14,21 +14,21 @@ const memoAxios = (callback) => {
 
 const axiosGet = memoAxios(axios.get);
 
-export const addFavourite = (id) => {
+export const addFavourite = (id: number) => {
 	return {
 		type: CONFIG.ACTION_ADD_FAV,
 		payload: id,
 	};
 };
 
-export const deleteFavourite = (id) => {
+export const deleteFavourite = (id: number) => {
 	return {
 		type: CONFIG.ACTION_DEL_FAV,
 		payload: id,
 	};
 };
 
-export const fetchPokemons = (currentUrl) => async (dispatch) => {
+export const fetchPokemons = (currentUrl: string) => async (dispatch: any) => {
 	dispatch({
 		type: CONFIG.ACTION_POKEMONS_LOADING,
 	});
@@ -36,7 +36,7 @@ export const fetchPokemons = (currentUrl) => async (dispatch) => {
 		currentUrl = `https://pokeapi.co/api/v2/pokemon?limit=${CONFIG.LIMIT}`;
 	}
 	try {
-		await axiosGet(currentUrl).then((response) => {
+		await axiosGet(currentUrl).then((response: any) => {
 			dispatch({
 				type: CONFIG.ACTION_POKEMONS,
 				payload: { ...response.data, currentUrl: currentUrl },
@@ -49,12 +49,12 @@ export const fetchPokemons = (currentUrl) => async (dispatch) => {
 	}
 };
 
-export const fetchPokemon = (id) => async (dispatch) => {
+export const fetchPokemon = (id: number) => async (dispatch: any) => {
 	dispatch({
 		type: CONFIG.ACTION_POKEMON_LOADING,
 	});
 	try {
-		await axiosGet(`https://pokeapi.co/api/v2/pokemon/${id}`).then((response) => {
+		await axiosGet(`https://pokeapi.co/api/v2/pokemon/${id}`).then((response: any) => {
 			dispatch({
 				type: CONFIG.ACTION_POKEMON,
 				payload: response.data,

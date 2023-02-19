@@ -1,21 +1,22 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchPokemon } from '../redux/actions';
 import { Link, useParams } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../redux/store';
+import { fetchPokemon } from '../redux/actions';
 import { getImageUrl } from '../helpers';
 import Loading from '../components/Loading';
 
 const PokemanDetail = () => {
-	const { id } = useParams();
+	const { id } = useParams() as any;
+	const pokemonId = parseInt(id);
 
-	const dispatchAction = useDispatch();
-	const { selectedPokemon } = useSelector((state) => {
+	const dispatchAction = useAppDispatch();
+	const { selectedPokemon } = useAppSelector((state) => {
 		return state;
 	});
 
 	useEffect(() => {
-		dispatchAction(fetchPokemon(id));
-	}, [dispatchAction, id]);
+		dispatchAction(fetchPokemon(pokemonId));
+	}, [dispatchAction, pokemonId]);
 
 	return (
 		<React.Fragment>
@@ -31,7 +32,7 @@ const PokemanDetail = () => {
 					<Loading />
 				) : (
 					<div className="pokemon-card">
-						<img src={getImageUrl(id)} alt={selectedPokemon.forms[0].name} />
+						<img src={getImageUrl(pokemonId)} alt={selectedPokemon.forms[0].name} />
 						<h1>{selectedPokemon.forms[0].name}</h1>
 						<div>Base Experience : {selectedPokemon.base_experience}</div>
 						<div>Height : {selectedPokemon.height}</div>

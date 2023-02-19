@@ -1,20 +1,26 @@
-import { useState, useEffect } from 'react';
-import { useDispatch, useStore } from 'react-redux';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { getImageUrl, getIdFromUrl } from '../helpers';
+import { useState, useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from '../redux/store';
+import { getImageUrl, getIdFromUrl } from '../helpers/';
 import { addFavourite, deleteFavourite } from '../redux/actions';
 
-const PokemonItem = ({ pokemon }) => {
+type PokemonItemProps = {
+	pokemon: any;
+};
+
+const PokemonItem = ({ pokemon }: PokemonItemProps) => {
 	const [favourite, setFavourite] = useState(false);
 	const id = getIdFromUrl(pokemon.url);
 	const name = pokemon.name;
 	const imageUrl = getImageUrl(getIdFromUrl(pokemon.url));
 
-	const store = useStore().getState();
-	const isfavourites = store.favourites.includes(id);
-	const dispatchAction = useDispatch();
+	const favourites = useAppSelector((state) => state.favourites);
 
-	const onFavouriteHandler = (id) => {
+	const isfavourites = favourites.includes(id);
+	const dispatchAction = useAppDispatch();
+
+	const onFavouriteHandler = (id: number) => {
 		if (isfavourites) {
 			dispatchAction(deleteFavourite(id));
 			setFavourite(false);
@@ -26,7 +32,7 @@ const PokemonItem = ({ pokemon }) => {
 
 	useEffect(() => {
 		isfavourites ? setFavourite(true) : setFavourite(false);
-	}, [isfavourites]);
+	}, []);
 
 	return (
 		<li>
