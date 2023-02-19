@@ -6,18 +6,18 @@ import { getImageUrl, getIdFromUrl } from '../helpers/';
 import { addFavourite, deleteFavourite } from '../redux/actions';
 
 type PokemonItemProps = {
-	pokemon: any;
+	pokemon: { name: string; url: string };
 };
 
 const PokemonItem = ({ pokemon }: PokemonItemProps) => {
-	const [favourite, setFavourite] = useState(false);
 	const id = getIdFromUrl(pokemon.url);
 	const name = pokemon.name;
 	const imageUrl = getImageUrl(getIdFromUrl(pokemon.url));
 
+	const [favourite, setFavourite] = useState(false);
 	const favourites = useAppSelector((state) => state.favourites);
-
 	const isfavourites = favourites.includes(id);
+
 	const dispatchAction = useAppDispatch();
 
 	const onFavouriteHandler = (id: number) => {

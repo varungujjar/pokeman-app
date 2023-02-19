@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../redux/store';
+import { useAppDispatch, useAppSelector, RootState } from '../redux/store';
 import { fetchPokemon } from '../redux/actions';
 import { getImageUrl } from '../helpers';
 import Loading from '../components/Loading';
@@ -10,7 +10,7 @@ const PokemanDetail = () => {
 	const pokemonId = parseInt(id);
 
 	const dispatchAction = useAppDispatch();
-	const { selectedPokemon } = useAppSelector((state) => {
+	const { selectedPokemon } = useAppSelector((state: RootState) => {
 		return state;
 	});
 

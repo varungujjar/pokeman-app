@@ -23,27 +23,37 @@ beforeEach(() => {
 	jest.clearAllMocks();
 });
 
-it('Test Pokemon Detail', async () => {
-	const user = userEvent.setup();
-
-	//Mock the axios get call with data
+const fetchPokemon = () => {
 	const mockedAxios = axios as jest.Mocked<typeof axios>;
 	mockedAxios.get.mockResolvedValue(mockPokemonDetail);
+};
 
-	// (axios as unknown as jest.Mock).mockResolvedValueOnce(mockPokemonDetail);
-
-	//Render the PokemonList component with Providers
+const renderPokemon = () => {
 	renderWithProviders(<PokemanDetail />);
+};
 
-	//Should show an intial Loading text
+const checkLoading = () => {
 	expect(screen.queryByText(/Loading.../i)).toBeInTheDocument();
+};
 
-	//Lets verify if the api call was made only once
-	expect(axios.get).toHaveBeenCalledTimes(1);
+describe('PokemonDetail Tests', () => {
+	it('Fetch API to diplay single Pokemon', async () => {
+		//Mock the axios get call with data
+		fetchPokemon();
 
-	//Wait for the data to show up and verify if we found
-	//title as venusaur on the list
-	await waitFor(() => {
-		expect(screen.queryByText(/venusaur/i)).toBeInTheDocument();
+		//Render the PokemonList component with Providers
+		renderPokemon();
+
+		//Should show an intial Loading text
+		checkLoading();
+
+		//Lets verify if the api call was made only once
+		expect(axios.get).toHaveBeenCalledTimes(1);
+
+		//Wait for the data to show up and verify if we found
+		//title as venusaur on the list
+		await waitFor(() => {
+			expect(screen.queryByText(/venusaur/i)).toBeInTheDocument();
+		});
 	});
 });

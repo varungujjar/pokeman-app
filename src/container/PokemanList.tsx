@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useAppDispatch, useAppSelector } from '../redux/store';
+import { useAppDispatch, useAppSelector, RootState } from '../redux/store';
 import { fetchPokemons } from '../redux/actions';
 import { getIdFromUrl } from '../helpers';
 import Loading from '../components/Loading';
@@ -8,7 +8,7 @@ import PokemanItem from '../components/PokemanItem';
 
 const PokemanList = () => {
 	const dispatchAction = useAppDispatch();
-	const { pokemons } = useAppSelector((state) => {
+	const { pokemons } = useAppSelector((state: RootState) => {
 		return state;
 	});
 
