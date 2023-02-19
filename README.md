@@ -8,7 +8,7 @@ Pokemon App is a React web application where you can navigate the details of the
 
 ## live demo
 
-[Pokemon React App Demo](https://#)
+[Pokemon React App Demo](https://varungujjar-pokemon.netlify.app/)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

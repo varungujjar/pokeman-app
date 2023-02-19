@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { getImageUrl, getIdFromUrl } from '../helpers';
 import { addFavourite, deleteFavourite } from '../redux/actions';
 
-const PokemonItem = ({ pokemon, currentUrl }) => {
+const PokemonItem = ({ pokemon }) => {
 	const [favourite, setFavourite] = useState(false);
 	const id = getIdFromUrl(pokemon.url);
 	const name = pokemon.name;
@@ -34,7 +34,7 @@ const PokemonItem = ({ pokemon, currentUrl }) => {
 				{favourite ? (
 					<img src="./heart.svg" alt="favourite-icon" />
 				) : (
-					<img src="./heart_outline.svg" alt="favourite-icon" />
+					<img src="./heart_outline.svg" alt="unfavourite-icon" />
 				)}
 			</button>
 			<Link to={`/${id}`}>
