@@ -30,6 +30,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - HTML
 - CSS
 - JavaScript/ES6
+- Typescript
 - React Hooks
 - React Router
 - Redux

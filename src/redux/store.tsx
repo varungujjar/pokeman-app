@@ -6,7 +6,10 @@ import reducers from './reducers';
 export const store = configureStore({ reducer: reducers });
 
 export function setupStore(preloadedState?: PreloadedState<RootState>) {
-	return store;
+	return configureStore({
+		reducer: reducers,
+		preloadedState,
+	});
 }
 
 export type RootState = ReturnType<typeof store.getState>;
