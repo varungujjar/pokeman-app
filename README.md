@@ -14,10 +14,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Features
 
-- A list of first 100 pokemon that appeared in the show.
-- You can see the list of the pokemon by filtering them.
+- A list of 50 pokemons showing per page.
+- You can favourite your Pokemon by clicking on the Heat Icon.
 - When a pokemon is clicked you can see the details of the pokemon.
-- You can navigate back to the home page by clicking on the logo or on the button below.
+- You can navigate back to the previous page by clicking on the back button or the logo.
 
 ## Potential Features
 

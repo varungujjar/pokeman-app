@@ -22,7 +22,9 @@ const PokemanDetail = () => {
 		<React.Fragment>
 			<div className="container-detail">
 				<header>
-					<img src="./logo.png" alt="pokeman-logo" className="logo" />
+					<Link className="button" to="/">
+						<img src="./logo.png" alt="pokeman-logo" className="logo" />
+					</Link>
 					<Link className="button" to="/">
 						Go Back
 					</Link>
