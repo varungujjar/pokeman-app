@@ -15,7 +15,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Features
 
 - A list of 50 pokemons showing per page.
-- You can favourite your Pokemon by clicking on the Heat Icon.
+- You can add and remove a Pokemon from favourites by clicking on the Heart icon.
 - When a pokemon is clicked you can see the details of the pokemon.
 - You can navigate back to the previous page by clicking on the back button or the logo.
 
