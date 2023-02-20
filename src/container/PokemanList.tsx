@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector, RootState } from '../redux/store';
 import { fetchPokemons } from '../redux/actions';
 import { getIdFromUrl } from '../helpers';
@@ -29,7 +30,9 @@ const PokemanList = () => {
 		<React.Fragment>
 			<div className="container">
 				<header>
-					<img src="./logo.png" alt="pokeman-logo" className="logo" />
+					<Link to="/">
+						<img src="./logo.png" alt="pokeman-logo" className="logo" />
+					</Link>
 					{pokemons && (
 						<Pagination gotoNextPage={pokemons.next && gotoNextPage} gotoPrevPage={pokemons.previous && gotoPrevPage} />
 					)}
