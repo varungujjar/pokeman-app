@@ -23,6 +23,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 - Responsive layout.
 - Favourite your Pokemon.
+- Tests for Listing and Detail
 
 ## Built with
 
@@ -47,8 +48,12 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 - git clone `https://github.com/varungujjar/pokemon-app.git`
 - cd pokemon-app
-- run npm install
-- run npm run start
+- npm install
+- npm run start
+
+### Unit Tests
+
+- npm test
 
 ## Authors
 
